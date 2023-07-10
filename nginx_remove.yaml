@@ -1,0 +1,16 @@
+---
+ - name: Stop Nginx and Remove Nginx
+   hosts: all
+   become: yes
+   become_user: root
+
+   tasks:
+    - name: stop running Nginx
+      service:
+       name: nginx
+       state: stopped
+
+    - name: remove Nginx
+      dnf:
+       name: nginx
+       state: absent     
